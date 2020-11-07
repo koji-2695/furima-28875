@@ -13,6 +13,8 @@ class User < ApplicationRecord
   validates :days, presence: true
   validates :fee, presence: true
 
-  /\A[0-9]+\z/
+  validates :price, format: { with: /\A[0-9]+\z/ }
+
+  validates :price, length: { in: 300..9999999 }
   
 end

@@ -35,44 +35,56 @@ Things you may want to cover:
 
 ### Association
 
-- has_many :room_users
-- has_many :rooms, through: room_users
-- has_many :messages
+- has_one :item
+- has_one :record
+- has_one :address
 
-## rooms テーブル
+## items テーブル
 
 | Column | Type   | Options     |
 | ------ | ------ | ----------- |
-| name   | string | null: false |
+| price   | string | null: false |
+| lister   | string | null: false |
+| category   | string | null: false |
+| condition   | string | null: false |
+| shipping fee   | string | null: false |
+| area   | string | null: false |
+| shipping date   | string | null: false |
+  
 
 ### Association
 
-- has_many :room_users
-- has_many :users, through: room_users
-- has_many :messages
+- has_one :user
+- has_one :record
+- has_one :address
 
-## room_users テーブル
+## records テーブル
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
-| user   | references | null: false, foreign_key: true |
-| room   | references | null: false, foreign_key: true |
+| credit card   | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :room
-- belongs_to :user
 
-## messages テーブル
+- has_one :user
+- has_one :item
+- has_one :address
+
+
+## address テーブル
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
-| content | string     |                                |
-| user    | references | null: false, foreign_key: true |
-| room    | references | null: false, foreign_key: true |
+| postal code | string     |                                |
+| prefecture    | references | null: false, foreign_key: true |
+| municipality    | references | null: false, foreign_key: true |
+| phone number    | references | null: false, foreign_key: true |
+
 
 ### Association
 
-- belongs_to :room
-- belongs_to :user
+- has_one :user
+- has_one :item
+- has_one :record
 
