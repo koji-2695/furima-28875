@@ -35,8 +35,8 @@ Things you may want to cover:
 
 ### Association
 
-- has_one :item
-- has_one :record
+- has_many :items
+- has_many :records
 - has_one :address
 
 ## items テーブル
