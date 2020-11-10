@@ -86,6 +86,7 @@ Things you may want to cover:
 | postal code | string     |                                |
 | prefecture    | references | null: false, foreign_key: true |
 | municipality    | references | null: false, foreign_key: true |
+| house number    | references | null: false, foreign_key: true |
 | building name    | references | null: false, foreign_key: true |
 | phone number    | references | null: false, foreign_key: true |
 
