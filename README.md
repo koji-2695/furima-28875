@@ -37,7 +37,7 @@ Things you may want to cover:
 | first name(kana) | string | null: false |
 | family name | string | null: false |
 | family name(kana)     | string | null: false |
-| birthday    | string | null: false |
+| birthday    | date | null: false |
 
 ### Association
 
@@ -50,12 +50,12 @@ Things you may want to cover:
 | Column | Type   | Options     |
 | ------ | ------ | ----------- |
 | price   | integer | null: false |
-| lister   | string | null: false |
-| category   | string | null: false |
-| condition   | string | null: false |
-| shipping fee   | string | null: false |
-| area   | string | null: false |
-| shipping date   | string | null: false |
+| lister   | integer | null: false |
+| category   | integer | null: false |
+| condition   | integer | null: false |
+| shipping fee   | integer | null: false |
+| area   | integer | null: false |
+| shipping date   | integer | null: false |
   
 
 ### Association
@@ -68,7 +68,8 @@ Things you may want to cover:
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
-| credit card   | references | null: false, foreign_key: true |
+| username   | references | null: false, foreign_key: true |
+| item id   | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -85,6 +86,7 @@ Things you may want to cover:
 | postal code | string     |                                |
 | prefecture    | references | null: false, foreign_key: true |
 | municipality    | references | null: false, foreign_key: true |
+| building name    | references | null: false, foreign_key: true |
 | phone number    | references | null: false, foreign_key: true |
 
 
