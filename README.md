@@ -29,9 +29,15 @@ Things you may want to cover:
 
 | Column   | Type   | Options     |
 | -------- | ------ | ----------- |
-| name     | string | null: false |
+| nickname     | string | null: false |
 | email    | string | null: false |
 | password | string | null: false |
+| password(confirm) | string | null: false |
+| first name | string | null: false |
+| first name(kana) | string | null: false |
+| family name | string | null: false |
+| family name(kana)     | string | null: false |
+| birthday    | string | null: false |
 
 ### Association
 
@@ -43,7 +49,7 @@ Things you may want to cover:
 
 | Column | Type   | Options     |
 | ------ | ------ | ----------- |
-| price   | string | null: false |
+| price   | integer | null: false |
 | lister   | string | null: false |
 | category   | string | null: false |
 | condition   | string | null: false |
