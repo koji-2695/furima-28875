@@ -31,12 +31,11 @@ Things you may want to cover:
 | -------- | ------ | ----------- |
 | nickname     | string | null: false |
 | email    | string | null: false |
-| password | string | null: false |
-| password(confirm) | string | null: false |
+| encrypted_password | string | null: false |
 | first name | string | null: false |
-| first name(kana) | string | null: false |
+| first name_kana | string | null: false |
 | family name | string | null: false |
-| family name(kana)     | string | null: false |
+| family name_kana    | string | null: false |
 | birthday    | date | null: false |
 
 ### Association
@@ -51,16 +50,16 @@ Things you may want to cover:
 | ------ | ------ | ----------- |
 | price   | integer | null: false |
 | lister   | integer | null: false |
-| category   | integer | null: false |
-| condition   | integer | null: false |
-| shipping fee   | integer | null: false |
-| area   | integer | null: false |
-| shipping date   | integer | null: false |
+| category_id   | integer | null: false |
+| condition_id   | integer | null: false |
+| shipping fee_id   | integer | null: false |
+| area_id   | integer | null: false |
+| shipping date_id   | integer | null: false |
   
 
 ### Association
 
-- has_one :user
+- belongs_to :user
 - has_one :record
 - has_one :address
 
@@ -68,14 +67,14 @@ Things you may want to cover:
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
-| username   | references | null: false, foreign_key: true |
-| item id   | references | null: false, foreign_key: true |
+| user   | references | null: false, foreign_key: true |
+| item   | references | null: false, foreign_key: true |
 
 ### Association
 
 
-- has_one :user
-- has_one :item
+- belongs_to :user
+- belongs_to :item
 - has_one :address
 
 
@@ -84,16 +83,16 @@ Things you may want to cover:
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
 | postal code | string     |                                |
-| prefecture    | references | null: false, foreign_key: true |
-| municipality    | references | null: false, foreign_key: true |
-| house number    | references | null: false, foreign_key: true |
-| building name    | references | null: false, foreign_key: true |
-| phone number    | references | null: false, foreign_key: true |
+| prefecture    | integer | null: false, foreign_key: true |
+| municipality    | string | null: false, foreign_key: true |
+| house number    | string | null: false, foreign_key: true |
+| building name    | string | null: false, foreign_key: true |
+| phone number    | string | null: false, foreign_key: true |
 
 
 ### Association
 
 - has_one :user
 - has_one :item
-- has_one :record
+- belongs_to :record
 
