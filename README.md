@@ -83,11 +83,12 @@ Things you may want to cover:
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
 | postal code | string     |                                |
-| prefecture    | integer | null: false, foreign_key: true |
+| prefecture_id    | integer | null: false, foreign_key: true |
 | municipality    | string | null: false, foreign_key: true |
 | house number    | string | null: false, foreign_key: true |
 | building name    | string | null: false, foreign_key: true |
 | phone number    | string | null: false, foreign_key: true |
+| records    | string | null: false, foreign_key: true |
 
 
 ### Association
