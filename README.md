@@ -93,7 +93,6 @@ Things you may want to cover:
 
 ### Association
 
-- has_one :user
-- has_one :item
+
 - belongs_to :record
 
