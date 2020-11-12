@@ -82,13 +82,13 @@ Things you may want to cover:
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
-| postal code | string     |                                |
-| prefecture_id    | integer | null: false, foreign_key: true |
-| municipality    | string | null: false, foreign_key: true |
-| house number    | string | null: false, foreign_key: true |
-| building name    | string | null: false, foreign_key: true |
-| phone number    | string | null: false, foreign_key: true |
-| records    | string | null: false, foreign_key: true |
+| postal code | string     | null: false    |
+| prefecture_id    | integer | null: false             |
+| municipality    | string | null: false               |
+| house number    | string | null: false               |
+| building name    | string | null: false              |
+| phone number    | string | null: false               |
+| records    | integer | null: false, foreign_key: true |
 
 
 ### Association
