@@ -48,9 +48,9 @@ Things you may want to cover:
 
 | Column | Type   | Options     |
 | ------ | ------ | ----------- |
-| price_id   | integer | null: false |
-| item_name_id   | integer | null: false |
-| explanation_id   | integer | null: false |
+| price   | integer | null: false |
+| item_name   | string | null: false |
+| explanation   | text | null: false |
 | lister_id   | integer | null: false |
 | category_id   | integer | null: false |
 | condition_id   | integer | null: false |
@@ -88,9 +88,9 @@ Things you may want to cover:
 | area_id    | integer | null: false             |
 | municipality    | string | null: false               |
 | house_number    | string | null: false               |
-| building_name    | string | null: false              |
+| building_name    | string |           |
 | phone_number    | string | null: false               |
-| records    | references | null: false, foreign_key: true |
+| record    | references | null: false, foreign_key: true |
 
 
 ### Association
