@@ -5,5 +5,12 @@ RSpec.describe User, type: :model do
     end
     it "メールアドレスが空では登録できない" do
     end
+    it "パスワードが空では登録できない" do
+    end
+    it "パスワードが5文字以下では登録できない" do
+    end
+    it "生年月日が空では登録できない" do
+    end
+    it "パスワードは半角英数字以外は登録できない" do
   end
 end
