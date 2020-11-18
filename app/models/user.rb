@@ -5,10 +5,16 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :name, presence: true
-  validates :email, presence: true
-  validates :encrypted_password, presence: true
-                                 length: { minimum: 6 }
+
+  with_options presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]+\z/, message: '全角文字を使用してください' } do
+    validates :first_name
+    validates :last_name
+    validates :first_name_kana
+    validates :last_name_kana
+
+    VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   
+
   validates :birthday, presence: true
 
   VALID_PASSWORD_REGEX = /\A[a-z0-9]+\z/i
