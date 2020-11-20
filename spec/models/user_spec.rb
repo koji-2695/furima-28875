@@ -3,24 +3,29 @@ RSpec.describe User, type: :model do
   describe 'ユーザー新規登録' do
 
     it "ニックネームが空だと登録できない" do
-      @user.name = nil
+      @user = FactoryBot.build(:user)  
+      @user.name = ""  
       @user.valid?
       expect(@user.errors.full_messages).to include("Name can't be blank")
     end
 
     it "メールアドレスが空では登録できない" do
-      @user.email = nil
+      @user = FactoryBot.build(:user)  
+      @user.email = ""  
       @user.valid?
       expect(@user.errors.full_messages).to include("Email can't be blank")
     end
 
     it "パスワードが空では登録できない" do
-      @user.password = nil
+      @user = FactoryBot.build(:user)  
+      @user.password = ""  
       @user.valid?
+      
       expect(@user.errors.full_messages).to include("Password can't be blank")
     end
 
     it "パスワードが5文字以下では登録できない" do
+      @user = FactoryBot.build(:user) 
       @user.password = "12345"
       @user.password_confirmation = "12345"
       @user.valid?
@@ -28,13 +33,16 @@ RSpec.describe User, type: :model do
     end
 
     it "生年月日が空では登録できない" do
-      @user.birthday = nil
+      @user = FactoryBot.build(:user)  
+      @user.birthday = ""  
       @user.valid?
+      
       expect(@user.errors.full_messages).to include("Birthday can't be blank")
     end
 
     it "パスワードは半角英数字以外は登録できない" do
-      @user.password = "/\A[a-z0-9]+\z/i"
+      @user = FactoryBot.build(:user) 
+      @user.password = "aあ"
       @user.password_confirmation = "/\A[a-z0-9]+\z/i"
       @user.valid?
       expect(@user.errors.full_messages).to include("Password needs to include only half-width alphanumeric
@@ -42,10 +50,12 @@ RSpec.describe User, type: :model do
     end
 
     it "emailは＠を含む必要がある" do
+      @user = FactoryBot.build(:user)
       @user.email = nil
       @user.valid?
       expect(@user.errors.full_messages).to include("Email needs to include @")
     end
 
 
+  end
 end
