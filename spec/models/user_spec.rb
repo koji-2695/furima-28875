@@ -2,6 +2,27 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   describe 'ユーザー新規登録' do
 
+    context '新規登録がうまくいくとき' do
+      
+      it "nameとemail、その@マーク、birthday、passwordとpassword_confirmationが存在すれば登録できる" do
+        expect(@user).to be_valid
+      end
+
+      it "passwordが6文字以上であれば登録できる" do
+        @user.password = "000000"
+        @user.password_confirmation = "000000"
+        expect(@user).to be_valid
+      end
+
+      it "パスワードは半角英数字であれば登録できる" do
+        @user.password = "/\A[a-z0-9]+\z/i"
+        @user.password_confirmation = "/\A[a-z0-9]+\z/i"
+        expect(@user).to be_valid
+      end
+
+      
+      context '新規登録がうまくいかないとき' do
+
     it "ニックネームが空だと登録できない" do
       @user = FactoryBot.build(:user)  
       @user.name = ""  
@@ -49,7 +70,7 @@ RSpec.describe User, type: :model do
         ")
     end
 
-    it "emailは＠を含む必要がある" do
+    it "emailは＠がないと登録できない" do
       @user = FactoryBot.build(:user)
       @user.email = nil
       @user.valid?
