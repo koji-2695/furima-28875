@@ -6,17 +6,17 @@ class User < ApplicationRecord
 
   validates :name, presence: true
 
-    with_options presence: true, format: { with: /\A[一-龥ぁ-ん]/, message: '全角カタカナを使用してください' } do
-    validates :first_name
-    validates :last_name
+  with_options presence: true, format: { with: /\A[一-龥ぁ-ん]/, message: '全角カタカナを使用してください' } do
+  validates :first_name
+  validates :last_name
+  end
 
-    with_options presence: true, format: { with: /[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+/, message: '全角カタカナを使用してください' } do
-    validates :first_name_kana
-    validates :last_name_kana
-    end
+  with_options presence: true, format: { with: /[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+/, message: '全角カタカナを使用してください' } do
+  validates :first_name_kana
+  validates :last_name_kana
+  end
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
-    VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  
 
   validates :birthday, presence: true
 
