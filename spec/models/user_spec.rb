@@ -19,7 +19,27 @@ RSpec.describe User, type: :model do
         @user.password_confirmation = "/\A[a-z0-9]+\z/i"
         expect(@user).to be_valid
       end
-    end
+
+      it "first_nameは全角文字であれば登録できる" do
+        @user.first_name = "/\A[一-龥ぁ-ん]/"
+        expect(@user).to be_valid
+      end
+
+      it "family_nameは全角文字であれば登録できる" do
+        @user.family_name = "/\A[一-龥ぁ-ん]/"
+        expect(@user).to be_valid
+      end
+
+
+      it "first_name_kanaは全角カタカナであれば登録できる" do
+        @user.first_name_kana = "/[\p{katakana}ー－&&[^ -~｡-ﾟ]]+/"
+        expect(@user).to be_valid
+      end  
+
+      it "family_name_kanaは全角カタカナであれば登録できる" do
+        @user.family_name_kana = "/[\p{katakana}ー－&&[^ -~｡-ﾟ]]+/"
+        expect(@user).to be_valid
+      end  
 
       
     context '新規登録がうまくいかないとき' do
@@ -77,6 +97,36 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Email needs to include @")
       end
+
+      it "first_nameは全角文字以外は登録できない" do
+        @user.first_name = "あa"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First_name needs to include only double-byte character
+          ")
+      end  
+
+      it "family_nameは全角文字以外は登録できない" do
+        @user.family_name = "あa"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Family_name needs to include only double-byte character
+          ")
+      end  
+
+      it "first_name_kanaは全角カタカナ以外は登録できない" do
+        @user.first_name_kana = "アあ"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First_name_kana needs to include only full-width katakana
+          ")
+      end
+
+      it "family_name_kanaは全角カタカナ以外は登録できない" do
+        @user.family_name_kana = "アあ"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Family_name_kana needs to include only full-width katakana
+          ")
+      end
+
+
     end
   end
 end
