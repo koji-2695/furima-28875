@@ -15,7 +15,7 @@ class User < ApplicationRecord
   validates :first_name_kana
   validates :family_name_kana
   end
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  
 
 
   validates :birthday, presence: true
