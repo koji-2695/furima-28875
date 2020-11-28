@@ -87,56 +87,51 @@ RSpec.describe User, type: :model do
         @user = FactoryBot.build(:user)  
         @user.birthday = ""  
         @user.valid?
-
+        
         expect(@user.errors.full_messages).to include("Birthday can't be blank")
       end
-
+      
       it "パスワードは半角英数字以外は登録できない" do
         @user = FactoryBot.build(:user) 
         @user.password = "aあ"
         @user.password_confirmation = "aあ"
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password needs to include only half-width alphanumeric
-          ")
+        expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)", "Password is invalid")
       end
 
       it "emailは＠がないと登録できない" do
         @user = FactoryBot.build(:user)
         @user.email = "abced.co.jp"
         @user.valid?
-        expect(@user.errors.full_messages).to include("Email needs to include @")
+        expect(@user.errors.full_messages).to include("Email is invalid")
       end
 
       it "first_nameは全角文字以外は登録できない" do
         @user = FactoryBot.build(:user)
         @user.first_name = "あa"
         @user.valid?
-        expect(@user.errors.full_messages).to include("First_name needs to include only double-byte character
-          ")
+        expect(@user.errors.full_messages).to include("First name 全角文字を使用してください")
       end  
 
       it "family_nameは全角文字以外は登録できない" do
         @user = FactoryBot.build(:user)
         @user.family_name = "あa"
         @user.valid?
-        expect(@user.errors.full_messages).to include("Family_name needs to include only double-byte character
-          ")
+        expect(@user.errors.full_messages).to include("Family name 全角文字を使用してください")
       end  
 
       it "first_name_kanaは全角カタカナ以外は登録できない" do
         @user = FactoryBot.build(:user)
         @user.first_name_kana = "アあ"
         @user.valid?
-        expect(@user.errors.full_messages).to include("First_name_kana needs to include only full-width katakana
-          ")
+        expect(@user.errors.full_messages).to include("First name kana 全角カタカナを使用してください")
       end
 
       it "family_name_kanaは全角カタカナ以外は登録できない" do
         @user = FactoryBot.build(:user)
         @user.family_name_kana = "アあ"
         @user.valid?
-        expect(@user.errors.full_messages).to include("Family_name_kana needs to include only full-width katakana
-          ")
+        expect(@user.errors.full_messages).to include("Family name kana 全角カタカナを使用してください")
       end
 
 
