@@ -15,6 +15,11 @@ class User < ApplicationRecord
   validates :first_name_kana
   validates :family_name_kana
   end
+
+  validates :email, presence: true, length: { maximum: 255 }
+  # ,
+  #                   format: { with: VALID_EMAIL_REGEX, message: 'メールアドレスに一意性を持たせてください'},
+  #                   uniqueness: true
   
 
 

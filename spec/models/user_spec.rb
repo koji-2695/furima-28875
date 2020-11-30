@@ -48,6 +48,17 @@ RSpec.describe User, type: :model do
         expect(@user).to be_valid
       end  
 
+      it "メールアドレスは一意性があれば登録できる" do
+        @user = FactoryBot.create(:user, email:'test@example')  
+        @author = FactoryBot.build(:user, email:'test@example')  
+        # expect(user).to_not be_valid
+        @author.valid?
+       expect(@author.errors.full_messages).to include("Email has already been taken")
+        # expect(@user).to be_valid
+        
+      end
+
+
     end
 
       
@@ -134,6 +145,24 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Family name kana 全角カタカナを使用してください")
       end
 
+      it "パスワードが半角数字のみの場合は登録できない" do
+        @user = FactoryBot.build(:user) 
+        @user.password = "123456"
+        @user.password_confirmation = "123456"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password is invalid")
+      end
+
+      it "パスワードが半角英字のみの場合は登録できない" do
+        @user = FactoryBot.build(:user) 
+        @user.password = "abcdef"
+        @user.password_confirmation = "abcdef"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password is invalid")
+      end
+
+
+      
 
     end
   end
