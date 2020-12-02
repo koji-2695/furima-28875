@@ -25,7 +25,9 @@ class User < ApplicationRecord
 
   validates :birthday, presence: true
 
-  VALID_PASSWORD_REGEX = /\A[a-z0-9]+\z/i
-  validates :password, format: { with: VALID_PASSWORD_REGEX }
-
+  VALID_PASSWORD_REGEX =/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
+  validates :password, presence: true,
+            format: { with: VALID_PASSWORD_REGEX,
+             message: "は半角の英字・数字それぞれ１文字以上含む必要があります"}
+  
 end
