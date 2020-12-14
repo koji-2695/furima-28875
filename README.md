@@ -42,7 +42,7 @@ Things you may want to cover:
 
 - has_many :items
 - has_many :records
-- 
+
 
 ## items テーブル
 
