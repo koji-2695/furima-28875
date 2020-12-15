@@ -1,14 +1,5 @@
 class List < ApplicationRecord
 
-  belongs_to :user
-  has_one_attached :image
-  extend ActiveHash::Associations::ActiveRecordExtensions
-
-
-
-  validates :content, presence: true
-
-
   
   with_options presence: true, format: { with: /\A[0-9]+\z/, message: '半角数字を使用してください' } do
   validates :price, length: { in: 300..9999999 }
@@ -28,7 +19,6 @@ class List < ApplicationRecord
   validates :area, presence: true
 
   validates :shipping_date, presence: true
-
 
 
 end
