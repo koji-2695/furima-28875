@@ -8,6 +8,24 @@ class ListsController < ApplicationController
   end
 
   def create
-    List.create(list_params)
+    @list = List.new(list_params)
+    @list.valid?
+    if @list.save
+      redirect_to root_path
+    else
+      render :show
+
+    end
+  end
+      
+
+    
+  
+
+  private
+  def list_params
+    params.require(:list).permit(:price, :item_name, :explanation, :area_id, :category_id, :condition_id, :lister_id, :shipping_date_id).merge(user_id: current_user.id)
+
   end
 end
+

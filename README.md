@@ -44,7 +44,7 @@ Things you may want to cover:
 - has_many :records
 
 
-## items テーブル
+## lists テーブル
 
 | Column | Type   | Options     |
 | ------ | ------ | ----------- |
@@ -57,6 +57,7 @@ Things you may want to cover:
 | shipping_fee_id   | integer | null: false |
 | area_id   | integer | null: false |
 | shipping_date_id   | integer | null: false |
+| user_id   | integer | null: false, foreign_key: true |
   
 
 ### Association
