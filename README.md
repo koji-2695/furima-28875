@@ -51,7 +51,6 @@ Things you may want to cover:
 | price   | integer | null: false |
 | item_name   | string | null: false |
 | explanation   | text | null: false |
-| lister_id   | integer | null: false |
 | category_id   | integer | null: false |
 | condition_id   | integer | null: false |
 | shipping_fee_id   | integer | null: false |

@@ -4,7 +4,6 @@ class CreateLists < ActiveRecord::Migration[6.0]
       t.integer :price,  null: false
       t.string :item_name,  null: false
       t.text :explanation,  null: false
-      t.integer :lister_id,  null: false
       t.integer :category_id,  null: false
       t.integer :condition_id,  null: false
       t.integer :shipping_fee_id,  null: false
