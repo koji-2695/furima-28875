@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe List, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  
 
   describe '商品出品' do
 
@@ -11,6 +11,8 @@ RSpec.describe List, type: :model do
         @list = FactoryBot.build(:list)  
         expect(@list).to be_valid
       end
+
+      
 
       
 
@@ -37,7 +39,7 @@ RSpec.describe List, type: :model do
         @list = FactoryBot.build(:list)  
         @list.item_name = ""  
         @list.valid?
-        expect(@list.errors.full_messages).to include("Item_name can't be blank")
+        expect(@list.errors.full_messages).to include("Item name can't be blank")
       end
 
       it "商品の説明が空だと登録できない" do
@@ -49,37 +51,37 @@ RSpec.describe List, type: :model do
 
       it "カテゴリーが空だと登録できない" do
         @list = FactoryBot.build(:list)  
-        @list.category = ""  
+        @list.category_id = ""  
         @list.valid?
         expect(@list.errors.full_messages).to include("Category can't be blank")
       end
 
       it "商品の状態が空だと登録できない" do
         @list = FactoryBot.build(:list)  
-        @list.condition = ""  
+        @list.condition_id = ""  
         @list.valid?
         expect(@list.errors.full_messages).to include("Condition can't be blank")
       end
 
       it "配送料の負担が空だと登録できない" do
         @list = FactoryBot.build(:list)  
-        @list.shipping_fee = ""  
+        @list.shipping_fee_id = ""  
         @list.valid?
-        expect(@list.errors.full_messages).to include("Shipping_fee can't be blank")
+        expect(@list.errors.full_messages).to include("Shipping fee can't be blank")
       end
 
       it "発送元の地域が空だと登録できない" do
         @list = FactoryBot.build(:list)  
-        @list.area = ""  
+        @list.area_id = ""  
         @list.valid?
         expect(@list.errors.full_messages).to include("Area can't be blank")
       end
 
       it "発送までの日数が空では登録できない" do
         @list = FactoryBot.build(:list)  
-        @list.shipping_date = ""  
+        @list.shipping_date_id = ""  
         @list.valid?
-        expect(@list.errors.full_messages).to include("Shipping_date can't be blank")
+        expect(@list.errors.full_messages).to include("Shipping date can't be blank")
       end
 
       
@@ -88,14 +90,14 @@ RSpec.describe List, type: :model do
         @list = FactoryBot.build(:list) 
         @list.price = "ab"
         @list.valid?
-        expect(@list.errors.full_messages).to include("Price は半角数字である必要があります")
+        expect(@list.errors.full_messages).to include("Price is not included in the list")
       end
 
       it "販売価格は300~9999999の範囲でなければ登録できない" do
         @list = FactoryBot.build(:list) 
         @list.price = "3333333333"
         @list.valid?
-        expect(@list.errors.full_messages).to include("Price は300~9999999の範囲内である必要があります")
+        expect(@list.errors.full_messages).to include("Price is not included in the list")
       end
 
    end
