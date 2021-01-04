@@ -65,7 +65,7 @@ RSpec.describe List, type: :model do
 
       it "カテゴリーが0だと登録できない" do
         
-        @list.category_id = "0"  
+        @list.category_id = 0
         @list.valid?
         expect(@list.errors.full_messages).to include("Category must be other than 0")
       end
@@ -81,7 +81,7 @@ RSpec.describe List, type: :model do
 
       it "商品の状態が0だと登録できない" do
         
-        @list.condition_id = "0"  
+        @list.condition_id = 0
         @list.valid?
         expect(@list.errors.full_messages).to include("Condition must be other than 0")
       end
@@ -95,7 +95,7 @@ RSpec.describe List, type: :model do
 
       it "配送料の負担が0だと登録できない" do
         
-        @list.shipping_fee_id = "0"  
+        @list.shipping_fee_id = 0 
         @list.valid?
         expect(@list.errors.full_messages).to include("Shipping fee must be other than 0")
       end
@@ -109,7 +109,7 @@ RSpec.describe List, type: :model do
 
       it "発送元の地域が0だと登録できない" do
         
-        @list.area_id = "0"  
+        @list.area_id = 0 
         @list.valid?
         expect(@list.errors.full_messages).to include("Area must be other than 0")
       end
@@ -123,7 +123,7 @@ RSpec.describe List, type: :model do
 
       it "発送までの日数が0では登録できない" do
         
-        @list.shipping_date_id = "0"  
+        @list.shipping_date_id = 0 
         @list.valid?
         expect(@list.errors.full_messages).to include("Shipping date must be other than 0")
       end
@@ -137,9 +137,16 @@ RSpec.describe List, type: :model do
         expect(@list.errors.full_messages).to include("Price is not included in the list")
       end
 
-      it "販売価格は300~9999999の範囲でなければ登録できない" do
+      it "販売価格は299以下だと登録できない" do
         
-        @list.price = "3333333333"
+        @list.price = "250"
+        @list.valid?
+        expect(@list.errors.full_messages).to include("Price is not included in the list")
+      end
+
+      it "販売価格は10,000,000以上だと登録できない" do
+        
+        @list.price = "100,000,000"
         @list.valid?
         expect(@list.errors.full_messages).to include("Price is not included in the list")
       end

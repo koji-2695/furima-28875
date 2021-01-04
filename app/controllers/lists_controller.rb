@@ -1,6 +1,6 @@
 class ListsController < ApplicationController
 
-  before_action :user_logged_in?
+  
 
   def index  
     
@@ -10,7 +10,9 @@ class ListsController < ApplicationController
     @list = List.new
     unless user_signed_in?
       flash[:alert] = "ログインしてください"
-      redirect_to root_path
+      redirect to root_path
+
+    end
 
   end
 
@@ -18,12 +20,12 @@ class ListsController < ApplicationController
     @list = List.new(list_params)
     
     if @list.save
-      redirect_to root_path
+      redirect to root_path
     else
-      render :show
+      render :new
 
-    end
   end
+end
       
 
     
