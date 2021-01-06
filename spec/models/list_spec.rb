@@ -10,7 +10,7 @@ RSpec.describe List, type: :model do
 
     context '商品出品がうまくいくとき' do
 
-      it "商品名と商品の説明、カテゴリー、商品の状態、配送料の負担、発送元の地域、発送までの日数、販売価格が存在すれば登録できる" do
+      it "商品名と商品の説明、カテゴリー、商品の状態、配送料の負担、発送元の地域、発送までの日数、販売価格、画像が存在すれば登録できる" do
         
         expect(@list).to be_valid
       end
@@ -150,6 +150,29 @@ RSpec.describe List, type: :model do
         @list.valid?
         expect(@list.errors.full_messages).to include("Price is not included in the list")
       end
+
+
+      it "販売価格は全角文字では登録できない" do
+        
+        @list.price = "あいうえお"
+        @list.valid?
+        expect(@list.errors.full_messages).to include("Price is not included in the list")
+      end
+
+      it "販売価格は半角英数混合では登録できない" do
+        
+        @list.price = "1234ab"
+        @list.valid?
+        expect(@list.errors.full_messages).to include("Price is not a number")
+      end
+
+      it "画像が空だと登録できない" do
+     
+        @list.image = nil 
+        @list.valid?
+        expect(@list.errors.full_messages).to include("Image can't be blank")
+      end
+
 
    end
 

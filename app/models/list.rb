@@ -8,9 +8,11 @@ class List < ApplicationRecord
 
   validates :explanation, presence: true
 
+  validates :image, presence: true
+
   validates_inclusion_of :price, in: 300..9_999_999
   
-  with_options presence: true, format: { with: /\A[0-9]+\z/, message: '半角数字を使用してください' } do
+  with_options presence: true, numericality: { only_integer: true } do
   validates :price
 
 

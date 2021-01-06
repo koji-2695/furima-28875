@@ -33,7 +33,7 @@ end
 
   private
   def list_params
-    params.require(:list).permit(:price, :item_name, :explanation, :area_id, :category_id, :condition_id, :shipping_fee_id, :shipping_date_id).merge(user_id: current_user.id)
+    params.require(:list).permit(:price, :item_name, :explanation, :area_id, :category_id, :condition_id, :shipping_fee_id, :shipping_date_id, :image).merge(user_id: current_user.id)
 
   end
 end
