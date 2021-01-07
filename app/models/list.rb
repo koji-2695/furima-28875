@@ -4,16 +4,17 @@ class List < ApplicationRecord
   has_one_attached :image
   extend ActiveHash::Associations::ActiveRecordExtensions
 
-  validates :item_name, presence: true
-
-  validates :explanation, presence: true
-
-  validates :image, presence: true
 
   validates_inclusion_of :price, in: 300..9_999_999
   
   with_options presence: true, numericality: { only_integer: true } do
   validates :price
+
+  validates :item_name
+
+  validates :explanation
+
+  validates :image
 
 
   validates :category_id

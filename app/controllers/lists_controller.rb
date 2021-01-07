@@ -1,4 +1,5 @@
 class ListsController < ApplicationController
+  before_action :authenticate_user!,only:[:new,:create,] 
 
   
 
@@ -8,13 +9,13 @@ class ListsController < ApplicationController
 
   def new
     @list = List.new
-    unless user_signed_in?
-      flash[:alert] = "ログインしてください"
-      redirect to root_path
+    
 
-    end
+
 
   end
+
+  
 
   def create
     @list = List.new(list_params)
@@ -24,8 +25,8 @@ class ListsController < ApplicationController
     else
       render :new
 
+    end
   end
-end
       
 
     
