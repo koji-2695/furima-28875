@@ -21,13 +21,13 @@ RSpec.describe List, type: :model do
 
       it "販売価格は半角数字であれば登録できる" do
         
-        @list.price = "50000"
+        @list.price = 50000
         expect(@list).to be_valid
       end
 
       it "販売価格は300~9999999の範囲であれば登録できる" do
          
-        @list.price = "7777777"
+        @list.price = 7777777
         expect(@list).to be_valid
       end
 
@@ -139,14 +139,14 @@ RSpec.describe List, type: :model do
 
       it "販売価格は299以下だと登録できない" do
         
-        @list.price = "250"
+        @list.price = 250
         @list.valid?
         expect(@list.errors.full_messages).to include("Price is not included in the list")
       end
 
       it "販売価格は10,000,000以上だと登録できない" do
         
-        @list.price = "100,000,000"
+        @list.price = 100,000,000
         @list.valid?
         expect(@list.errors.full_messages).to include("Price is not included in the list")
       end
