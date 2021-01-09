@@ -1,10 +1,11 @@
 class List < ApplicationRecord
 
   belongs_to :user
+  belongs_to :active_hash
   has_one_attached :image
   extend ActiveHash::Associations::ActiveRecordExtensions
 
-  validates :price, format: { with: /\A[0-9]+\z/, message: '半角数字を入力してください' }
+  validates :price, numericality: { with: /\A[0-9]+\z/, message: '半角数字を入力してください' }
 
   validates_inclusion_of :price, in: 300..9_999_999
   
