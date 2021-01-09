@@ -4,6 +4,7 @@ class List < ApplicationRecord
   has_one_attached :image
   extend ActiveHash::Associations::ActiveRecordExtensions
 
+  validates :price, format: { with: /\A[0-9]+\z/, message: '半角数字を入力してください' }
 
   validates_inclusion_of :price, in: 300..9_999_999
   
@@ -12,7 +13,7 @@ class List < ApplicationRecord
     validates :item_name
     validates :explanation
     validates :image
-   validates :category_id
+   
     with_options numericality: { other_than: 0 , only_integer: true} do
       validates :category_id
       validates :condition_id
