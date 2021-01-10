@@ -1,7 +1,6 @@
 class List < ApplicationRecord
 
   belongs_to :user
-  belongs_to :active_hash
   has_one_attached :image
   extend ActiveHash::Associations::ActiveRecordExtensions
 
