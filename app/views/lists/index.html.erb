@@ -181,6 +181,15 @@
     </ul>
   </div>
   <%# /商品一覧 %>
+  <% @lists.each do |list| %>
+    <div class="content_list" style="background-image: url(<%= list.image %>);">
+      <p><%= list.item_name %></p>
+      <p><%= list.price %></p>
+      <span class="name">
+        <%= tweet.name %>
+      </span>
+    </div>
+  <% end %>
 </div>
 <%= link_to new_list_path, class: 'purchase-btn' do %>
   <span class='purchase-btn-text'>出品する</span>
