@@ -128,11 +128,14 @@
     <%= link_to '新規投稿商品', "#", class: "subtitle" %>
     <ul class='item-lists'>
 
+
+
+  <% @lists.each do |list| %>
       <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
       <li class='list'>
         <%= link_to "#" do %>
         <div class='item-img-content'>
-          <%= image_tag "item-sample.png", class: "item-img" %>
+          <%= image_tag list.image, class: "item-img" %>
 
           <%# 商品が売れていればsold outを表示しましょう %>
           <div class='sold-out'>
@@ -143,10 +146,10 @@
         </div>
         <div class='item-info'>
           <h3 class='item-name'>
-            <%= "商品名" %>
+            <%= list.item_name %>
           </h3>
           <div class='item-price'>
-            <span><%= "販売価格" %>円<br><%= '配送料負担' %></span>
+            <span><%= list.price %>円<br><%= list.shipping_fee.data %></span>
             <div class='star-btn'>
               <%= image_tag "star.png", class:"star-icon" %>
               <span class='star-count'>0</span>
@@ -156,6 +159,7 @@
         <% end %>
       </li>
       <%# //商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
+  <% end %> 
 
       <%# 商品がない場合のダミー %>
       <%# 商品がある場合は表示されないようにしましょう %>
@@ -181,15 +185,14 @@
     </ul>
   </div>
   <%# /商品一覧 %>
-  <% @lists.each do |list| %>
-    <div class="content_list" style="background-image: url(<%= list.image %>);">
-      <p><%= list.item_name %></p>
-      <p><%= list.price %></p>
-      <span class="name">
-        <%= tweet.name %>
-      </span>
-    </div>
-  <% end %>
+  <%# <% @list.each do |list| %>
+    <%# <div class="content_list" style="background-image: url(<%= list.image %>);"> %>
+      <%# <p><%= list.text %></p> %>
+      <%# <span class="name"> %>
+        <%# <%= list.name %> %>
+      <%# </span> %>
+    <%# </div> %>
+  <%# <% end %> %> %>
 </div>
 <%= link_to new_list_path, class: 'purchase-btn' do %>
   <span class='purchase-btn-text'>出品する</span>
