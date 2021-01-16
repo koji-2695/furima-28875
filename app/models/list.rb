@@ -3,6 +3,8 @@ class List < ApplicationRecord
   belongs_to :user
   has_one_attached :image
   extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :shipping_fee
+  
 
   validates :price, numericality: { with: /\A[0-9]+\z/, message: '半角数字を入力してください' }
 
