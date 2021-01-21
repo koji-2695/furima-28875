@@ -43,8 +43,15 @@ class ListsController < ApplicationController
 
   def update
 
-    list = List.find(params[:id])
-    list.update(list_params)
+    @list = List.find(params[:id])
+    @list.update(list_params)
+
+    if @list.save
+      redirect_to root_path
+    else
+      render :edit
+
+    end
 
   end
 
