@@ -6,6 +6,9 @@ class ListsController < ApplicationController
 
   def index  
     @lists = List.all
+
+
+    
   end
 
   def new
@@ -37,12 +40,12 @@ class ListsController < ApplicationController
   end
 
   def edit  
+
     if  current_user.id != @list.user_id
-      redirect_to root_path
+      redirect_to lists_path
 
     end
-
-
+    
     
 
   end
