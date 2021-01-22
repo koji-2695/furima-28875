@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  before_action :authenticate_user!,only:[:new,:create,] 
+  before_action :authenticate_user!,only:[:new,:create,:edit] 
   before_action :set_list, only: [:edit, :show, :update, :destroy,]
 
   
@@ -37,6 +37,11 @@ class ListsController < ApplicationController
   end
 
   def edit  
+    if  current_user.id != @list.user_id
+      redirect_to root_path
+
+    end
+
 
     
 
