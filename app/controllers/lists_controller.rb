@@ -1,5 +1,6 @@
 class ListsController < ApplicationController
   before_action :authenticate_user!,only:[:new,:create,] 
+  before_action :set_list, only: [:edit, :show, :update, :destroy,]
 
   
 
@@ -30,23 +31,23 @@ class ListsController < ApplicationController
 
   def show
 
-    @list = List.find(params[:id])
+    
 
 
   end
 
   def edit  
 
-    @list = List.find(params[:id])
+    
 
   end
 
   def update
 
-    @list = List.find(params[:id])
+    
     @list.update(list_params)
 
-    if @list.save
+    if  @list.update(list_params)
       redirect_to root_path
     else
       render :edit
@@ -54,6 +55,8 @@ class ListsController < ApplicationController
     end
 
   end
+
+  
 
       
 
@@ -65,5 +68,10 @@ class ListsController < ApplicationController
     params.require(:list).permit(:price, :item_name, :explanation, :area_id, :category_id, :condition_id, :shipping_fee_id, :shipping_date_id, :image).merge(user_id: current_user.id)
 
   end
+
+  def set_list
+    @list = List.find(params[:id])
+  end
+
 end
 
