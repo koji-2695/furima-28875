@@ -64,6 +64,12 @@ class ListsController < ApplicationController
 
   end
 
+  def destroy
+
+    @list.destroy
+
+  end
+
   
 
       
