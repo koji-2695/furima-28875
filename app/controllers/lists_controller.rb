@@ -29,8 +29,6 @@ class ListsController < ApplicationController
 
   def show
 
-    if  current_user.id == @list.user_id
-      redirect_to root_path
   
       end
 
@@ -64,7 +62,12 @@ class ListsController < ApplicationController
 
   def destroy
 
-    @list.destroy
+    if  current_user.id == @list.user_id
+      @list.destroy
+      redirect_to root_path
+     else 
+      redirect_to root_path
+     end
 
     
     
