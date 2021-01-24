@@ -13,17 +13,12 @@ class ListsController < ApplicationController
 
   def new
     @list = List.new
-    
-
-
-
   end
 
   
 
   def create
     @list = List.new(list_params)
-    
     if @list.save
       redirect_to root_path
     else
@@ -34,9 +29,10 @@ class ListsController < ApplicationController
 
   def show
 
+  
+      end
+
     
-
-
   end
 
   def edit  
@@ -66,8 +62,15 @@ class ListsController < ApplicationController
 
   def destroy
 
-    @list.destroy
+    if  current_user.id == @list.user_id
+      @list.destroy
+      redirect_to root_path
+     else 
+      redirect_to root_path
+     end
 
+    
+    
   end
 
   
