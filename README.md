@@ -40,8 +40,8 @@ Things you may want to cover:
 
 ### Association
 
-- has_many :items
-- has_many :records
+- has_many :lists
+- has_many :purchases
 
 
 ## lists テーブル
@@ -62,25 +62,25 @@ Things you may want to cover:
 ### Association
 
 - belongs_to :user
-- has_one :record
+- has_one :purchase
 
 
-## records テーブル
+## purchases テーブル
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
 | user   | references | null: false, foreign_key: true |
-| item   | references | null: false, foreign_key: true |
+| list   | references | null: false, foreign_key: true |
 
 ### Association
 
 
 - belongs_to :user
-- belongs_to :item
+- belongs_to :list
 - has_one :address
 
 
-## address テーブル
+## addresses テーブル
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
@@ -90,11 +90,11 @@ Things you may want to cover:
 | house_number    | string | null: false               |
 | building_name    | string |           |
 | phone_number    | string | null: false               |
-| record    | references | null: false, foreign_key: true |
+| purchase    | references | null: false, foreign_key: true |
 
 
 ### Association
 
 
-- belongs_to :record
+- belongs_to :purchase
 

@@ -29,8 +29,6 @@ class ListsController < ApplicationController
 
   def show
 
-  
-      end
 
     
   end
@@ -91,4 +89,5 @@ class ListsController < ApplicationController
   end
 
 end
+
 
