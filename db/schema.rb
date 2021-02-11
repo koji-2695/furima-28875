@@ -61,12 +61,12 @@ ActiveRecord::Schema.define(version: 2021_01_26_054307) do
   end
 
   create_table "purchases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id_id"
-    t.bigint "list_id_id"
+    t.bigint "user_id"
+    t.bigint "list_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["list_id_id"], name: "index_purchases_on_list_id_id"
-    t.index ["user_id_id"], name: "index_purchases_on_user_id_id"
+    t.index ["list_id"], name: "index_purchases_on_list_id"
+    t.index ["user_id"], name: "index_purchases_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
