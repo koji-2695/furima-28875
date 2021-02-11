@@ -1,10 +1,15 @@
 class PurchasesController < ApplicationController
-
+  before_action :authenticate_user!,only:[:index,:create] 
   before_action :set_list, only: [:index, :create]
 
   def index
     #フォームオブジェクトのインスタンスを生成し、インスタンス変数に代入する
     @purchase = FormObject.new
+
+    if  current_user.id = @list.user_id
+      redirect_to root_path
+
+    end
 
   end
 
@@ -16,7 +21,7 @@ class PurchasesController < ApplicationController
       pay_list
       @purchase.save
       return redirect_to root_path
-      
+
     else
       render :index
 
