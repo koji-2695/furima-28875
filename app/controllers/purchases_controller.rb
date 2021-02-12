@@ -6,9 +6,9 @@ class PurchasesController < ApplicationController
     #フォームオブジェクトのインスタンスを生成し、インスタンス変数に代入する
     @purchase = FormObject.new
 
-    if  current_user.id = @list.user_id
+    if  current_user.id == @list.user_id
       redirect_to root_path
-
+      
     end
 
   end
@@ -48,7 +48,7 @@ class PurchasesController < ApplicationController
 
   def pay_list
 
-    Payjp.api_key = "sk_test_5fc24df0e44f602329abd6e0"  # 自身のPAY.JPテスト秘密鍵を記述しましょう
+    Payjp.api_key =  ENV["PAYJP_SECRET_KEY"]  # 自身のPAY.JPテスト秘密鍵を記述しましょう
     Payjp::Charge.create(
         amount: @list.price,  # 商品の値段
         card: purchase_params[:token],    # カードトークン
