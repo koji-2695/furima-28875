@@ -8,9 +8,9 @@
       <%= @list.item_name %>
     </h2>
     <div class='item-img-content'>
-      <%= image_tag "item-sample.png" ,class:"item-box-img" %>
+      <%= image_tag @list.image ,class:"item-box-img" %>
       <%# 商品が売れている場合は、sold outを表示しましょう %>
-  <%if @list.purchase  present? %>
+  <%if @list.shipping_fee.present? %>
       <div class='sold-out'>
         <span>Sold Out!!</span>
       </div>
@@ -20,7 +20,7 @@
     </div>
     <div class="item-price-box">
       <span class="item-price">
-        ¥ 999,999,999
+        ¥<%= @list.price %>
       </span>
       <span class="item-postage">
         <%= @list.shipping_fee.data %>
