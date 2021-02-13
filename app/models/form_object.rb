@@ -5,11 +5,9 @@ class FormObject
   with_options presence: true do
     validates :user_id
     validates :list_id
-    validates :postal_code
     validates :area_id
     validates :municipality
     validates :house_number
-    validates :phone_number
     validates :token
     
 
@@ -31,9 +29,9 @@ class FormObject
       Address.create(postal_code: postal_code, municipality: municipality, area_id: area_id, phone_number: phone_number, house_number: house_number, building_name: building_name, purchase_id: purchase.id)
       
 
-      # 寄付金の情報を保存
+      
 
-      # 各テーブルにデータを保存する処理を書く
+      
     end
 
 end
