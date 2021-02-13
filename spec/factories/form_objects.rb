@@ -1,8 +1,7 @@
 FactoryBot.define do
   factory :form_object do
 
-    # association :user, :list,
-
+    
      
      postal_code     {"555-3845"}
      area_id         {1}

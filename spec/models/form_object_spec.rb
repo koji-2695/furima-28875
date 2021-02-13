@@ -6,11 +6,9 @@ RSpec.describe FormObject, type: :model do
     @list = FactoryBot.create(:list) 
     @user = FactoryBot.create(:user)
     @purchase = FactoryBot.build(:form_object, list_id: @list.id, user_id: @user.id )
-    # sleep (0.5)
+    
   end
-  #list = List.find(1) => list = {id: 1, info: "syouhin", price: 500}
-  #list.price => 500
-  #list.id
+  
 
   describe '商品購入' do
 
@@ -34,6 +32,13 @@ RSpec.describe FormObject, type: :model do
       it "電話番号は11桁以内であれば登録できる" do
          
         @purchase.phone_number = "12345678901"
+        expect(@purchase).to be_valid
+      end
+
+
+      it "建物名がない場合も登録できる" do
+         
+        @purchase.building_name = ""
         expect(@purchase).to be_valid
       end
 
@@ -112,6 +117,32 @@ RSpec.describe FormObject, type: :model do
         @purchase.valid?
         expect(@purchase.errors.full_messages).to include("Token can't be blank")
       end
+
+      it "電話番号にハイフンがある場合、登録できない" do
+
+        @purchase.phone_number = "123-4567123"
+        @purchase.valid?
+        expect(@purchase.errors.full_messages).to include("Phone number 電話番号は、11桁以内で登録してください")
+
+      end
+
+      it "ユーザーIDが存在しない場合、登録できない" do
+
+        @purchase.user_id = nil
+        @purchase.valid?
+        expect(@purchase.errors.full_messages).to include("User can't be blank")
+
+      end
+
+      it "商品のIDが存在しない場合、登録できない" do
+
+        @purchase.list_id = nil
+        @purchase.valid?
+        expect(@purchase.errors.full_messages).to include("List can't be blank")
+
+      end
+
+
 
 
     end
