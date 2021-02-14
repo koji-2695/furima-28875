@@ -100,14 +100,14 @@ RSpec.describe FormObject, type: :model do
 
       it "郵便番号は、ハイフンなしだと登録できない" do
         
-        @purchase.postal_code = 1234567 
+        @purchase.postal_code = "1234567"
         @purchase.valid?
         expect(@purchase.errors.full_messages).to include("Postal code 郵便番号は、ハイフンを付けてください")
       end
 
       it "電話番号は、12桁以上だと登録できない" do
         
-        @purchase.phone_number = 123456781234
+        @purchase.phone_number = "123456781234"
         @purchase.valid?
         expect(@purchase.errors.full_messages).to include("Phone number 電話番号は、11桁以内で登録してください")
       end

@@ -6,7 +6,7 @@ class PurchasesController < ApplicationController
     #フォームオブジェクトのインスタンスを生成し、インスタンス変数に代入する
     @purchase = FormObject.new
 
-    if  current_user.id == @list.user_id || @list.shipping_fee.present?
+    if  current_user.id == @list.user_id || @list.purchase.present?
       redirect_to root_path
       
     end

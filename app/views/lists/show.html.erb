@@ -9,14 +9,14 @@
     </h2>
     <div class='item-img-content'>
       <%= image_tag @list.image ,class:"item-box-img" %>
-      <%# 商品が売れている場合は、sold outを表示しましょう %>
+      
   <%if @list.shipping_fee.present? %>
       <div class='sold-out'>
         <span>Sold Out!!</span>
       </div>
 
   <% end %>
-      <%# //商品が売れている場合は、sold outを表示しましょう %>
+      
     </div>
     <div class="item-price-box">
       <span class="item-price">
@@ -27,7 +27,7 @@
       </span>
     </div>
 
-    <%# ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
+    
 
     <% if user_signed_in? %>
        <% if current_user.id == @list.user_id %>
@@ -38,15 +38,15 @@
 
        <% else %>
 
-       <%# 商品が売れていない場合はこちらを表示しましょう %>
+       
        <%= link_to '購入画面に進む', list_purchases_path(@list.id) ,class:"item-red-btn"%>
-       <%# //商品が売れていない場合はこちらを表示しましょう %>
+       
 
        <% end %>
     <% end %>
 
 
-    <%# //ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
+    
 
    
 
