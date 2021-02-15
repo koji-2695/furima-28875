@@ -29,8 +29,8 @@
 
     
 
-    <% if user_signed_in? %>
-       <% if current_user.id == @list.user_id  && @list.purchase.nil? %>
+    <% if user_signed_in? && @list.purchase.nil? %>
+       <% if current_user.id == @list.user_id  %>
 
        <%= link_to '商品の編集', edit_list_path(@list.id), method: :get, class: "item-red-btn" %>
        <p class='or-text'>or</p>

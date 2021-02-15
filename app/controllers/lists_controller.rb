@@ -29,20 +29,22 @@ class ListsController < ApplicationController
 
   def show
 
-    if  @list.purchase.present?
-      redirect_to root_path
-      
-    end
+    
   
   end
 
-  
+
 
   def edit  
 
     if  current_user.id != @list.user_id
       redirect_to lists_path
 
+    end
+
+    if  @list.purchase.present?
+      redirect_to root_path
+      
     end
     
     
