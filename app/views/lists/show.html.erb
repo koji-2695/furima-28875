@@ -10,7 +10,7 @@
     <div class='item-img-content'>
       <%= image_tag @list.image ,class:"item-box-img" %>
       
-  <%if @list.shipping_fee.present? %>
+  <%if @list.purchase.present? %>
       <div class='sold-out'>
         <span>Sold Out!!</span>
       </div>
@@ -30,7 +30,7 @@
     
 
     <% if user_signed_in? %>
-       <% if current_user.id == @list.user_id %>
+       <% if current_user.id == @list.user_id  && @list.purchase.nil? %>
 
        <%= link_to '商品の編集', edit_list_path(@list.id), method: :get, class: "item-red-btn" %>
        <p class='or-text'>or</p>
