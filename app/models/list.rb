@@ -8,6 +8,7 @@ class List < ApplicationRecord
   belongs_to :condition
   belongs_to :shipping_date
   belongs_to :shipping_fee
+  has_one :purchase
 
   
 

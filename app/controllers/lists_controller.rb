@@ -1,6 +1,6 @@
 class ListsController < ApplicationController
   before_action :authenticate_user!,only:[:new,:create,:edit] 
-  before_action :set_list, only: [:edit, :show, :update, :destroy,]
+  before_action :set_list, only: [:edit, :show, :update, :destroy]
 
   
 
@@ -29,17 +29,22 @@ class ListsController < ApplicationController
 
   def show
 
-  
-      end
-
     
+  
   end
+
+
 
   def edit  
 
     if  current_user.id != @list.user_id
       redirect_to lists_path
 
+    end
+
+    if  @list.purchase.present?
+      redirect_to root_path
+      
     end
     
     
@@ -48,14 +53,17 @@ class ListsController < ApplicationController
 
   def update
 
-    
-    @list.update(list_params)
 
     if  @list.update(list_params)
       redirect_to root_path
     else
       render :edit
 
+    end
+
+    if  @list.purchase.present?
+      redirect_to root_path
+      
     end
 
   end
@@ -91,4 +99,5 @@ class ListsController < ApplicationController
   end
 
 end
+
 
