@@ -53,14 +53,17 @@ class ListsController < ApplicationController
 
   def update
 
-    
-    @list.update(list_params)
 
     if  @list.update(list_params)
       redirect_to root_path
     else
       render :edit
 
+    end
+
+    if  @list.purchase.present?
+      redirect_to root_path
+      
     end
 
   end
