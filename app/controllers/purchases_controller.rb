@@ -1,9 +1,9 @@
 class PurchasesController < ApplicationController
-  before_action :authenticate_user!,only:[:index,:create] 
+  before_action :authenticate_user!, only:[:index,:create] 
   before_action :set_list, only: [:index, :create]
 
   def index
-    #フォームオブジェクトのインスタンスを生成し、インスタンス変数に代入する
+    
     @purchase = FormObject.new
 
     if  current_user.id == @list.user_id || @list.purchase.present?
